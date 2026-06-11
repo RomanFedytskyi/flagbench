@@ -160,7 +160,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="FlagBench benchmark runner")
     parser.add_argument(
         "--adapter",
-        choices=["reference", "unleash"],
+        choices=["reference", "unleash", "unleash_sim"],
         default="reference",
         help="Which resolver adapter to benchmark",
     )
