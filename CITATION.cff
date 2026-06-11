@@ -1,0 +1,50 @@
+cff-version: 1.2.0
+message: >
+  If you use FlagBench in your research, please cite both the software
+  and the accompanying paper.
+type: software
+title: "FlagBench: A Property-Based Correctness Benchmark Suite for Runtime Feature Flag Resolution Systems"
+authors:
+  - family-names: Fedytskyi
+    given-names: Roman
+    email: fedytskyi@gmail.com
+    affiliation: "ORSNN, Seattle, WA 98121, USA"
+version: 1.0.0
+date-released: "2026-06-11"
+url: "https://github.com/RomanFedytskyi/flagbench"
+repository-code: "https://github.com/RomanFedytskyi/flagbench"
+license: MIT
+keywords:
+  - feature flags
+  - feature toggles
+  - property-based testing
+  - runtime component versioning
+  - micro-frontends
+  - compliance
+  - continuous delivery
+  - software engineering benchmarks
+preferred-citation:
+  type: article
+  title: >
+    FlagBench: A Property-Based Correctness Framework and Benchmark Suite
+    for Runtime Feature Flag Resolution Systems
+  authors:
+    - family-names: Fedytskyi
+      given-names: Roman
+      affiliation: "ORSNN, Seattle, WA 98121, USA"
+  journal: "Journal of Systems and Software"
+  year: 2026
+  doi: "TBD"
+references:
+  - type: article
+    title: >
+      Dynamic Frontend Architecture for Runtime Component Versioning
+      and Feature Flag Resolution in Regulated Applications
+    authors:
+      - family-names: Fedytskyi
+        given-names: Roman
+    journal: "Software"
+    volume: 4
+    issue: 4
+    year: 2025
+    doi: "10.3390/software4040032"
