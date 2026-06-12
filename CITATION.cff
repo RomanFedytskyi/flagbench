@@ -11,6 +11,7 @@ authors:
     affiliation: "ORSNN, Seattle, WA 98121, USA"
 version: 1.0.0
 date-released: "2026-06-11"
+doi: "10.5281/zenodo.20649904"
 url: "https://github.com/RomanFedytskyi/flagbench"
 repository-code: "https://github.com/RomanFedytskyi/flagbench"
 license: MIT

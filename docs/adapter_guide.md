@@ -10,16 +10,11 @@ FlagBench does **not** replace your flag system. It wraps it. You write one Pyth
 
 Think of it like a test harness for a database driver — you bring your driver, FlagBench brings the test suite.
 
+![FlagBench adapter flow](adapter_flow.png)
+
 ```
-Your flag system
-      │
-      ▼
-  adapter.py          ← you write this (one function, ~20 lines)
-      │
-      ▼
-flagbench harness     ← runs 2,000 scenarios, measures 4 properties
-      │
-      ▼
+flagbench harness  →  resolve()  →  your flag system
+                   ←              ←  selected version
 results/summary.json  ← accuracy, latency, compliance violations, pass/fail
 ```
 

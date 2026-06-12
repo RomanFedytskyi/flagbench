@@ -1,5 +1,6 @@
 # FlagBench
 
+[![DOI](https://zenodo.org/badge/1266642945.svg)](https://doi.org/10.5281/zenodo.20649904)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![CI](https://github.com/RomanFedytskyi/flagbench/actions/workflows/ci.yml/badge.svg)](https://github.com/RomanFedytskyi/flagbench/actions)
@@ -76,21 +77,11 @@ variant = unleash.get_variant("checkout-widget", context)
 version = my_api.resolve_flag(flag="checkout-widget", user_id=user.id)
 ```
 
-FlagBench needs to call that same code 2,000 times with different test inputs and record the results. The way you connect FlagBench to your system is by writing a small **adapter** — a single `resolve()` function that:
+FlagBench needs to call that same code 2,000 times with different test inputs and record the results. The way you connect FlagBench to your system is by writing a small **adapter** — a single `resolve()` function that bridges the two:
 
-1. Receives a test scenario from FlagBench (user, route, timestamp, available versions)
-2. Calls your existing SDK/API exactly like your app does
-3. Returns the result back to FlagBench
+![FlagBench adapter flow](docs/adapter_flow.png)
 
-Think of it as a translator between FlagBench's test format and your system's API. **You don't implement any new API — you just wrap the one you already have.**
-
-```
-FlagBench                     Your system
-─────────────────             ──────────────────────────────────
-sends test scenario  →  resolve()  →  your_sdk.get_variant(...)
-                     ←             ←  returns selected version
-records the result
-```
+**You don't implement any new API — you just wrap the one you already have.**
 
 ### Step 1 — Write the adapter (one file, ~20 lines)
 
@@ -210,6 +201,7 @@ If you use FlagBench in your research, please cite:
   title   = {{FlagBench}: A Property-Based Correctness Benchmark Suite
              for Runtime Feature Flag Resolution Systems},
   year    = {2026},
+  doi     = {10.5281/zenodo.20649904},
   url     = {https://github.com/RomanFedytskyi/flagbench},
   license = {MIT}
 }

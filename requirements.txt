@@ -4,4 +4,3 @@ pandas>=2.0
 matplotlib>=3.7
 pytest>=7.4
 pytest-cov>=4.1
-unleash-client-python>=5.11
