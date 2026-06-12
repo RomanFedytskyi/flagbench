@@ -1,138 +1,119 @@
-<svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" role="img">
+<svg viewBox="0 0 1000 290" xmlns="http://www.w3.org/2000/svg" role="img">
   <title>FlagBench architecture diagram</title>
   <style>
-    .box-label { font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 22px; fill: #fff; }
-    .box-sub   { font-family: Arial, Helvetica, sans-serif; font-size: 14px; fill: rgba(255,255,255,0.82); }
-    .caption   { font-family: Arial, Helvetica, sans-serif; font-style: italic; font-size: 13px; fill: #888; }
-    .arrow-lbl-teal   { font-family: Arial, Helvetica, sans-serif; font-style: italic; font-size: 14px; fill: #009d8c; }
-    .arrow-lbl-orange { font-family: Arial, Helvetica, sans-serif; font-style: italic; font-size: 14px; fill: #c45008; }
+    .box-label { font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 19px; fill: #fff; }
+    .box-sub   { font-family: Arial, Helvetica, sans-serif; font-size: 13px; fill: rgba(255,255,255,0.82); }
+    .caption   { font-family: Arial, Helvetica, sans-serif; font-style: italic; font-size: 12px; fill: #888; }
+    .lbl-teal  { font-family: Arial, Helvetica, sans-serif; font-style: italic; font-size: 13px; fill: #009d8c; }
+    .lbl-ora   { font-family: Arial, Helvetica, sans-serif; font-style: italic; font-size: 13px; fill: #c45008; }
   </style>
   <defs>
-    <!-- Arrowhead markers -->
-    <marker id="ah-teal" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <marker id="ah-t" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
       <polygon points="0 0,8 3,0 6" fill="#009d8c"/>
     </marker>
-    <marker id="ah-orange" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <marker id="ah-o" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
       <polygon points="0 0,8 3,0 6" fill="#c45008"/>
     </marker>
-    <!-- Dot glow filter -->
-    <filter id="dglow" x="-80%" y="-80%" width="260%" height="260%">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <filter id="dg" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <!-- Box glow -->
-    <filter id="boxglow" x="-5%" y="-5%" width="110%" height="110%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <filter id="bg" x="-6%" y="-6%" width="112%" height="112%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
-  <!-- ── Background ── -->
-  <rect width="1000" height="300" fill="#ffffff"/>
+  <rect width="1000" height="290" fill="#fff"/>
 
-  <!-- ── Box 1: FlagBench (blue) ── -->
-  <rect x="38" y="48" width="248" height="192" rx="10" fill="#1b72be" filter="url(#boxglow)">
+  <!-- ── Box 1: FlagBench ── -->
+  <rect x="22" y="45" width="195" height="175" rx="9" fill="#1b72be" filter="url(#bg)">
     <animate attributeName="opacity" values="1;0.88;1" dur="3s" repeatCount="indefinite"/>
   </rect>
-  <text x="162" y="110" text-anchor="middle" class="box-label">FlagBench</text>
-  <text x="162" y="148" text-anchor="middle" class="box-sub">2,000 scenarios</text>
-  <text x="162" y="168" text-anchor="middle" class="box-sub">oracle · harness</text>
-  <text x="162" y="268" text-anchor="middle" class="caption">measures correctness</text>
+  <text x="119" y="100" text-anchor="middle" class="box-label">FlagBench</text>
+  <text x="119" y="133" text-anchor="middle" class="box-sub">2,000 scenarios</text>
+  <text x="119" y="152" text-anchor="middle" class="box-sub">oracle · harness</text>
+  <text x="119" y="253" text-anchor="middle" class="caption">measures correctness</text>
 
-  <!-- ── Box 2: resolve() (green) ── -->
-  <rect x="376" y="48" width="248" height="192" rx="10" fill="#009d8c" filter="url(#boxglow)">
+  <!-- ── Box 2: resolve() ── -->
+  <rect x="402" y="45" width="195" height="175" rx="9" fill="#009d8c" filter="url(#bg)">
     <animate attributeName="opacity" values="1;0.88;1" dur="3s" repeatCount="indefinite" begin="1s"/>
   </rect>
-  <text x="500" y="110" text-anchor="middle" class="box-label">resolve()</text>
-  <text x="500" y="152" text-anchor="middle" class="box-sub">adapter.py</text>
-  <text x="500" y="172" text-anchor="middle" class="box-sub">you write this</text>
-  <text x="500" y="268" text-anchor="middle" class="caption">~20 lines of Python</text>
+  <text x="499" y="100" text-anchor="middle" class="box-label">resolve()</text>
+  <text x="499" y="140" text-anchor="middle" class="box-sub">adapter.py</text>
+  <text x="499" y="159" text-anchor="middle" class="box-sub">you write this</text>
+  <text x="499" y="253" text-anchor="middle" class="caption">~20 lines of Python</text>
 
-  <!-- ── Box 3: Your system (orange) ── -->
-  <rect x="714" y="48" width="248" height="192" rx="10" fill="#c45008" filter="url(#boxglow)">
+  <!-- ── Box 3: Your system ── -->
+  <rect x="782" y="45" width="195" height="175" rx="9" fill="#c45008" filter="url(#bg)">
     <animate attributeName="opacity" values="1;0.88;1" dur="3s" repeatCount="indefinite" begin="2s"/>
   </rect>
-  <text x="838" y="110" text-anchor="middle" class="box-label">Your system</text>
-  <text x="838" y="152" text-anchor="middle" class="box-sub">GraphQL · SSM</text>
-  <text x="838" y="172" text-anchor="middle" class="box-sub">LaunchDarkly etc.</text>
-  <text x="838" y="268" text-anchor="middle" class="caption">unchanged in production</text>
+  <text x="879" y="100" text-anchor="middle" class="box-label">Your system</text>
+  <text x="879" y="140" text-anchor="middle" class="box-sub">GraphQL · SSM</text>
+  <text x="879" y="159" text-anchor="middle" class="box-sub">LaunchDarkly etc.</text>
+  <text x="879" y="253" text-anchor="middle" class="caption">unchanged in production</text>
 
   <!-- ── Arrows ── -->
-  <!-- 1. FlagBench → resolve()  (top, teal) -->
-  <line x1="288" y1="122" x2="374" y2="122" stroke="#009d8c" stroke-width="2" marker-end="url(#ah-teal)"/>
-  <text x="331" y="112" text-anchor="middle" class="arrow-lbl-teal">ResolutionInput</text>
+  <!-- 1. FlagBench → resolve()  top -->
+  <line x1="219" y1="115" x2="400" y2="115" stroke="#009d8c" stroke-width="2" marker-end="url(#ah-t)"/>
+  <text x="309" y="106" text-anchor="middle" class="lbl-teal">ResolutionInput</text>
 
-  <!-- 2. resolve() → FlagBench  (bottom, teal) -->
-  <line x1="374" y1="170" x2="288" y2="170" stroke="#009d8c" stroke-width="2" marker-end="url(#ah-teal)"/>
-  <text x="331" y="192" text-anchor="middle" class="arrow-lbl-teal">ResolutionOutput</text>
+  <!-- 2. resolve() → FlagBench  bottom -->
+  <line x1="400" y1="155" x2="219" y2="155" stroke="#009d8c" stroke-width="2" marker-end="url(#ah-t)"/>
+  <text x="309" y="174" text-anchor="middle" class="lbl-teal">ResolutionOutput</text>
 
-  <!-- 3. resolve() → Your system  (top, teal) -->
-  <line x1="626" y1="122" x2="712" y2="122" stroke="#009d8c" stroke-width="2" marker-end="url(#ah-teal)"/>
-  <text x="669" y="112" text-anchor="middle" class="arrow-lbl-teal">SDK call</text>
+  <!-- 3. resolve() → Your system  top -->
+  <line x1="599" y1="115" x2="780" y2="115" stroke="#009d8c" stroke-width="2" marker-end="url(#ah-t)"/>
+  <text x="689" y="106" text-anchor="middle" class="lbl-teal">SDK call</text>
 
-  <!-- 4. Your system → resolve()  (bottom, orange) -->
-  <line x1="712" y1="170" x2="626" y2="170" stroke="#c45008" stroke-width="2" marker-end="url(#ah-orange)"/>
-  <text x="669" y="192" text-anchor="middle" class="arrow-lbl-orange">activeVersion</text>
+  <!-- 4. Your system → resolve()  bottom -->
+  <line x1="780" y1="155" x2="599" y2="155" stroke="#c45008" stroke-width="2" marker-end="url(#ah-o)"/>
+  <text x="689" y="174" text-anchor="middle" class="lbl-ora">activeVersion</text>
 
-  <!-- ── Animated dots — arrow 1: FlagBench → resolve() ── -->
-  <circle r="5" fill="#00d4c0" filter="url(#dglow)">
-    <animateMotion dur="1.2s" repeatCount="indefinite" begin="0s">
-      <mpath href="#path1"/>
-    </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="1.2s" repeatCount="indefinite" begin="0s"/>
+  <!-- ── Flowing dots ── -->
+  <!-- arrow 1 -->
+  <circle r="5" fill="#00d4c0" filter="url(#dg)">
+    <animateMotion dur="1.4s" repeatCount="indefinite" begin="0s"><mpath href="#p1"/></animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="1.4s" repeatCount="indefinite" begin="0s"/>
   </circle>
-  <circle r="5" fill="#00d4c0" filter="url(#dglow)">
-    <animateMotion dur="1.2s" repeatCount="indefinite" begin="0.6s">
-      <mpath href="#path1"/>
-    </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="1.2s" repeatCount="indefinite" begin="0.6s"/>
+  <circle r="5" fill="#00d4c0" filter="url(#dg)">
+    <animateMotion dur="1.4s" repeatCount="indefinite" begin="0.7s"><mpath href="#p1"/></animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="1.4s" repeatCount="indefinite" begin="0.7s"/>
   </circle>
 
-  <!-- ── Animated dots — arrow 2: resolve() → FlagBench ── -->
-  <circle r="5" fill="#00d4c0" filter="url(#dglow)">
-    <animateMotion dur="1.2s" repeatCount="indefinite" begin="0.3s">
-      <mpath href="#path2"/>
-    </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="1.2s" repeatCount="indefinite" begin="0.3s"/>
+  <!-- arrow 2 -->
+  <circle r="5" fill="#00d4c0" filter="url(#dg)">
+    <animateMotion dur="1.4s" repeatCount="indefinite" begin="0.35s"><mpath href="#p2"/></animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="1.4s" repeatCount="indefinite" begin="0.35s"/>
   </circle>
-  <circle r="5" fill="#00d4c0" filter="url(#dglow)">
-    <animateMotion dur="1.2s" repeatCount="indefinite" begin="0.9s">
-      <mpath href="#path2"/>
-    </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="1.2s" repeatCount="indefinite" begin="0.9s"/>
+  <circle r="5" fill="#00d4c0" filter="url(#dg)">
+    <animateMotion dur="1.4s" repeatCount="indefinite" begin="1.05s"><mpath href="#p2"/></animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="1.4s" repeatCount="indefinite" begin="1.05s"/>
   </circle>
 
-  <!-- ── Animated dots — arrow 3: resolve() → Your system ── -->
-  <circle r="5" fill="#00d4c0" filter="url(#dglow)">
-    <animateMotion dur="1.2s" repeatCount="indefinite" begin="0.15s">
-      <mpath href="#path3"/>
-    </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="1.2s" repeatCount="indefinite" begin="0.15s"/>
+  <!-- arrow 3 -->
+  <circle r="5" fill="#00d4c0" filter="url(#dg)">
+    <animateMotion dur="1.4s" repeatCount="indefinite" begin="0.18s"><mpath href="#p3"/></animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="1.4s" repeatCount="indefinite" begin="0.18s"/>
   </circle>
-  <circle r="5" fill="#00d4c0" filter="url(#dglow)">
-    <animateMotion dur="1.2s" repeatCount="indefinite" begin="0.75s">
-      <mpath href="#path3"/>
-    </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="1.2s" repeatCount="indefinite" begin="0.75s"/>
+  <circle r="5" fill="#00d4c0" filter="url(#dg)">
+    <animateMotion dur="1.4s" repeatCount="indefinite" begin="0.88s"><mpath href="#p3"/></animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="1.4s" repeatCount="indefinite" begin="0.88s"/>
   </circle>
 
-  <!-- ── Animated dots — arrow 4: Your system → resolve() ── -->
-  <circle r="5" fill="#ff7832" filter="url(#dglow)">
-    <animateMotion dur="1.2s" repeatCount="indefinite" begin="0.45s">
-      <mpath href="#path4"/>
-    </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="1.2s" repeatCount="indefinite" begin="0.45s"/>
+  <!-- arrow 4 -->
+  <circle r="5" fill="#ff7832" filter="url(#dg)">
+    <animateMotion dur="1.4s" repeatCount="indefinite" begin="0.53s"><mpath href="#p4"/></animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="1.4s" repeatCount="indefinite" begin="0.53s"/>
   </circle>
-  <circle r="5" fill="#ff7832" filter="url(#dglow)">
-    <animateMotion dur="1.2s" repeatCount="indefinite" begin="1.05s">
-      <mpath href="#path4"/>
-    </animateMotion>
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="1.2s" repeatCount="indefinite" begin="1.05s"/>
+  <circle r="5" fill="#ff7832" filter="url(#dg)">
+    <animateMotion dur="1.4s" repeatCount="indefinite" begin="1.23s"><mpath href="#p4"/></animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="1.4s" repeatCount="indefinite" begin="1.23s"/>
   </circle>
 
-  <!-- Motion paths (invisible) -->
-  <path id="path1" d="M288,122 L374,122" fill="none" stroke="none"/>
-  <path id="path2" d="M374,170 L288,170" fill="none" stroke="none"/>
-  <path id="path3" d="M626,122 L712,122" fill="none" stroke="none"/>
-  <path id="path4" d="M712,170 L626,170" fill="none" stroke="none"/>
+  <!-- Motion paths -->
+  <path id="p1" d="M219,115 L400,115" fill="none" stroke="none"/>
+  <path id="p2" d="M400,155 L219,155" fill="none" stroke="none"/>
+  <path id="p3" d="M599,115 L780,115" fill="none" stroke="none"/>
+  <path id="p4" d="M780,155 L599,155" fill="none" stroke="none"/>
 </svg>
