@@ -14,6 +14,12 @@ evaluated against.
 
 ---
 
+## Architecture
+
+<img src="docs/flagbench_animated.svg" alt="FlagBench architecture: harness sends ResolutionInput to your adapter, adapter calls your system via SDK, system returns activeVersion, adapter returns ResolutionOutput to harness" width="100%"/>
+
+---
+
 ## Quick start
 
 ```bash
